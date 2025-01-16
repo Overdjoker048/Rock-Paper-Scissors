@@ -10,6 +10,17 @@ A simple command-line implementation of the classic Rock-Paper-Scissors game whe
 - Case-insensitive input handling
 - Continuous gameplay until manual exit (Ctrl+C)
 
+## SetupAndInstallation
+1. Clone the repository:
+``` bash
+git clone https://github.com/Overdjoker048/Rock-Paper-Scissors.git
+cd Rock-Paper-Scissors
+```
+2. Run the application :
+``` bash
+python main.py
+```
+
 ## How to Play
 
 1. Run the program
