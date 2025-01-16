@@ -10,7 +10,7 @@ A simple command-line implementation of the classic Rock-Paper-Scissors game whe
 - Case-insensitive input handling
 - Continuous gameplay until manual exit (Ctrl+C)
 
-## SetupAndInstallation
+## Setup And Installation
 1. Clone the repository:
 ``` bash
 git clone https://github.com/Overdjoker048/Rock-Paper-Scissors.git
