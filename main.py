@@ -1,12 +1,5 @@
-import random
-import platform
-import os
-
-match platform.system():
-    case "Windows":
-        clear_cmd = "cls"
-    case _:
-        clear_cmd = "clear"
+from random import randint
+from sys import stdout
 
 items = {
         "name": "Rock",
@@ -20,11 +13,11 @@ items = {
     }
 win = 0
 loose = 0
+cout = stdout.write
 
 try:
     while True:
-        os.system(clear_cmd)
-        print(f""" _____            _      _____                        _____       _
+        cout(f"""\033c _____            _      _____                        _____       _
 | __  | ___  ___ | |_   |  _  | ___  ___  ___  ___   |   __| ___ |_| ___  ___  ___  ___  ___ 
 |    -|| . ||  _|| '_|  |   __|| .'|| . || -_||  _|  |__   ||  _|| ||_ -||_ -|| . ||  _||_ -|
 |__|__||___||___||_,_|  |__|   |__,||  _||___||_|    |_____||___||_||___||___||___||_|  |___|
@@ -33,37 +26,30 @@ try:
 
     [*] Rock
     [*] Paper
-    [*] Scissors
+    [*] Scissors\n
     """)
         choice = input("[Game] What do you want to play:\n>>>").replace(" ", "").title()
-        check = False
-        for item in items:
-            if choice == item["name"]:
-                check = True
-                break
 
-        if check:
-            print(f"\n[You] {choice}")
-            choice_pourcent = random.randint(0, 2)
-            match choice_pourcent:
+        if choice in ("Rock", "Paper", "Scissors"):
+            cout(f"\n[You] {choice}\n")
+            match randint(0, 2):
                 case 0:
                     for item in items:
                         if choice == item["force"]:
-                            print(f"[Computer] {item["name"]}")
-                            print("[Game] You loose")
+                            cout(f"[Computer] {item["name"]}\n[Game] You loose\n")
                             loose += 1
+                            break
                 case 1:
-                    print(f"[Computer] {choice}")
-                    print("[Game] You equalized")
-                case 2:
                     for item in items:
                         if choice == item["name"]:
-                            print(f"[Computer] {item["force"]}")
-                            print("[Game] You win !")
+                            cout(f"[Computer] {item["force"]}\n[Game] You win !\n")
                             win += 1
+                            break
+                case _:
+                    cout(f"[Computer] {choice}\n[Game] You equalized\n")
         else:
-            print("\n[Error] What you entered is not part of the expected answers.")
+            cout("\n[Error] What you entered is not part of the expected answers.\n")
 
         input("\n[Game] Press Enter to restart...")
 except KeyboardInterrupt:
-    print("\n\nGood Bye :)")
+    cout("\n\nGood Bye :)")
